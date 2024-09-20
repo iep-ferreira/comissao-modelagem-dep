@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Esforço Docente - Visualização</title>
+
+    <!-- Incluindo bibliotecas externas -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SheetJS -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- noUiSlider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h1>Visualização - Curva do Esforço Docente</h1>
+
+    <!-- Seção para upload do arquivo Excel -->
+    <div class="file-upload">
+        <label for="fileUpload">Carregar arquivo Excel (.xlsx):</label>
+        <input type="file" id="fileUpload" accept=".xlsx, .xls" />
+    </div>
+
+    <!-- Controles de seleção -->
+    <div class="controls">
+        <div>
+            <label for="ch">Carga horária:</label>
+            <select id="ch">
+                <option value="total">Total</option>
+                <option value="teoria">Teoria</option>
+                <option value="pratica">Prática</option>
+                <option value="estagio">Estágio</option>
+            </select>
+        </div>
+        <div>
+            <label for="calendario">Calendário:</label>
+            <select id="calendario">
+                <option value="2023">2023</option>
+            </select>
+        </div>
+        <div>
+            <label for="curso">Curso:</label>
+            <select id="curso">
+                <option value="Música">Música</option>
+                <option value="Imagem e Som">Imagem e Som</option>
+            </select>
+        </div>
+        <div>
+            <label for="adjusted">Esforço Ajustado:</label>
+            <input type="checkbox" id="adjusted" checked>
+        </div>
+        <div>
+            <label for="percapita">Per Capita:</label>
+            <input type="checkbox" id="percapita" checked>
+        </div>
+    </div>
+
+    <!-- Gráfico de Barras -->
+    <h2>Resultado</h2>
+    <div id="bar_plot" style="width: 100%; height: 500px;"></div>
+
+    <!-- Tabela de Resultados -->
+    <h2>Tabela de Resultados</h2>
+    <table id="data_table" class="display">
+        <thead>
+            <tr>
+                <th>Docentes</th>
+                <th>Esforço</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Sliders para os parâmetros teóricos -->
+    <h2>Parâmetros Créditos Teóricos</h2>
+    <div class="sliders">
+        <div>
+            <label for="b1_teo">b1 Teórico:</label>
+            <div id="b1_teo_slider"></div>
+            <span id="b1_teo_val"></span>
+        </div>
+        <div>
+            <label for="b2_teo">b2 Teórico:</label>
+            <div id="b2_teo_slider"></div>
+            <span id="b2_teo_val"></span>
+        </div>
+        <div>
+            <label for="b3_teo">b3 Teórico:</label>
+            <div id="b3_teo_slider"></div>
+            <span id="b3_teo_val"></span>
+        </div>
+        <div>
+            <label for="t1_teo">t1 Teórico:</label>
+            <div id="t1_teo_slider"></div>
+            <span id="t1_teo_val"></span>
+        </div>
+        <div>
+            <label for="t2_teo">t2 Teórico:</label>
+            <div id="t2_teo_slider"></div>
+            <span id="t2_teo_val"></span>
+        </div>
+    </div>
+
+    <!-- Gráfico da função eta teórica -->
+    <div id="plot_eta_teo" style="width: 100%; height: 500px;"></div>
+
+    <!-- Sliders para os parâmetros práticos -->
+    <h2>Parâmetros Créditos Práticos</h2>
+    <div class="sliders">
+        <div>
+            <label for="b1_prat">b1 Prático:</label>
+            <div id="b1_prat_slider"></div>
+            <span id="b1_prat_val"></span>
+        </div>
+        <div>
+            <label for="b2_prat">b2 Prático:</label>
+            <div id="b2_prat_slider"></div>
+            <span id="b2_prat_val"></span>
+        </div>
+        <div>
+            <label for="b3_prat">b3 Prático:</label>
+            <div id="b3_prat_slider"></div>
+            <span id="b3_prat_val"></span>
+        </div>
+        <div>
+            <label for="t1_prat">t1 Prático:</label>
+            <div id="t1_prat_slider"></div>
+            <span id="t1_prat_val"></span>
+        </div>
+        <div>
+            <label for="t2_prat">t2 Prático:</label>
+            <div id="t2_prat_slider"></div>
+            <span id="t2_prat_val"></span>
+        </div>
+    </div>
+
+    <!-- Gráfico da função eta prática -->
+    <div id="plot_eta_prat" style="width: 100%; height: 500px;"></div>
+
+    <!-- Script principal -->
+    <script src="app.js"></script>
+</body>
+</html>
