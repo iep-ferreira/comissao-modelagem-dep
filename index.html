@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Esforço Docente - Visualização</title>
-
+<!-- noUiSlider -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+<!-- wNumb for number formatting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
     <!-- Incluindo bibliotecas externas -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -50,17 +54,11 @@
         <div>
             <label for="curso">Curso:</label>
             <select id="curso">
-                <option value="Música">Música</option>
-                <option value="Imagem e Som">Imagem e Som</option>
             </select>
         </div>
         <div>
             <label for="adjusted">Esforço Ajustado:</label>
             <input type="checkbox" id="adjusted" checked>
-        </div>
-        <div>
-            <label for="percapita">Per Capita:</label>
-            <input type="checkbox" id="percapita" checked>
         </div>
     </div>
 
